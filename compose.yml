@@ -4,10 +4,13 @@ services:
   hark-test:
     build: .
     network_mode: host
+    ipc: host
     tty: true
     volumes:
-      - ./workspace:~/workspace
-    runtime: nvidia
+      - ./workspace:/root/workspace
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
     deploy:
       resources:
         reservations:
