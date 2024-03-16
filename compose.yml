@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  hark-test:
+    build: .
+    network_mode: host
+    tty: true
+    volumes:
+      - ./workspace:~/workspace
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities:
+              - gpu
