@@ -1,13 +1,15 @@
 version: "3"
 
 services:
-  hark-test:
+  dev:
+    container_name: hark-test
     build: .
     network_mode: host
     ipc: host
     tty: true
     volumes:
       - ./workspace:/root/workspace
+    runtime: nvidia
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=all
